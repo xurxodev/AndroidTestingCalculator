@@ -1,6 +1,8 @@
 # AndroidTestingCalculator
 Simple calculator for android created for educational purposes on testing in android
 
+This is a calculator with limitations, it is created for educational purposes. The logic of the calculator may not be the most appropriate if your goal was to make a real calculator.
+
 License
 -------
 
