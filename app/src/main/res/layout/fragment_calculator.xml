@@ -1,0 +1,135 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity$CalculatorFragment">
+    <LinearLayout
+        android:id="@+id/display"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.4"
+        android:background="#ffffff"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/operationsHistory"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.3"
+            android:text="5+5"
+            android:gravity="center_vertical|right"
+            android:textSize="26sp" />
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:text="10"
+            android:gravity="center_vertical|right"
+            android:textSize="56sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.6"
+        android:orientation="vertical"
+        android:background="#F4F4F4">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="+/-" />
+            <Button style="@style/MediumTextSizeCalculatorButton"
+                android:text="CA" />
+            <Button
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="ce" />
+            <Button
+                style="@style/SmallTextSizeCalculatorButton"
+                android:text="x"
+                android:focusable="true" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="7" />
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="8" />
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="9" />
+            <Button
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="/" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="4" />
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="5" />
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="6" />
+            <Button
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="+" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="1" />
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="2" />
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="3" />
+            <Button
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="-" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="0"
+                android:layout_weight="1"/>
+            <Button
+                style="@style/LargueTextSizeCalculatorButton"
+                android:text="."
+                android:layout_weight="1"/>
+            <Button
+                style="@style/AccentCalculatorButton"
+                android:text="="
+                android:layout_weight="1"/>
+            <Button
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="%"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

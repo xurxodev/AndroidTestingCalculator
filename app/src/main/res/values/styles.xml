@@ -1,8 +1,46 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Set AppCompat’s color theming attrs -->
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">#757575</item>
+        <item name="colorAccent">#FF5252</item>
+
+        <!--<item name="android:windowBackground">@color/window_background</item>
+
+        <item name="windowActionBar">false</item>-->
     </style>
 
+    <style name="CalculatorButton">
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="NormalCalculatorButton" parent="CalculatorButton">
+        <item name="android:textColor">?android:textColorSecondary</item>
+        <item name="android:background">#E5E5E5</item>
+    </style>
+
+    <style name="LargueTextSizeCalculatorButton" parent="NormalCalculatorButton">
+        <item name="android:textSize">28sp</item>
+    </style>
+
+    <style name="MediumTextSizeCalculatorButton" parent="NormalCalculatorButton">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="SmallTextSizeCalculatorButton" parent="NormalCalculatorButton">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="AccentCalculatorButton" parent="CalculatorButton">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:background">?colorAccent</item>
+    </style>
 </resources>

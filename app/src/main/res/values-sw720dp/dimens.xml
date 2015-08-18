@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="navigation_header_height">192dp</dimen>
+    <dimen name="default_padding">16dp</dimen>
+    <dimen name="small_padding">8dp</dimen>
+
+    <dimen name="home_image_item_width">340dp</dimen>
+    <dimen name="home_image_item_height">190dp</dimen>
+</resources>
