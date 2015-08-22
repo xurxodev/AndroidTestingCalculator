@@ -3,6 +3,48 @@ Simple calculator for android created for educational purposes on testing in and
 
 This is a calculator with limitations, it is created for educational purposes. The logic of the calculator may not be the most appropriate if your goal was to make a real calculator.
 
+## Unit test configuration
+From version 1.1 of Android Studio and the Android gradle plugin brings support for unit testing.
+
+* Add Dependencies in the build.gradle file of your android module
+```groovy
+dependencies {
+    //Tests
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+}
+```
+* Update build.gradle to use the android gradle plugin version 1.1 or later
+```groovy
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.3'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}  
+```
+* Create a directory for your testing source code, src/test/java
+* Open the "Build variants" tool window and change the test artifact to "Unit tests".
+* Create your test!!!
+
+* The android.jar file that is used to run unit tests does not contain any actual code. Instead, all methods throw exceptions (by default). This behavior is to make sure your unit tests only test your code and do not depend on any particular behaviour of the Android platform. If that proves problematic, you can add the snippet below to your build.gradle to change this behavior:
+
+```groovy
+android {
+  // ...
+  testOptions { 
+    unitTests.returnDefaultValues = true !!Caution
+  }
+}
+```
 License
 -------
 
