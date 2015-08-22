@@ -1,17 +1,14 @@
 package com.xurxo.androidtestingcalculator.domain;
 
-/*This is a simple calculator with limitations , is created for educational purposes on testing
-in android studio . The logic of the calculator may not be the most appropriate if your goal
-was to make a real calculator.*/
-
 import com.xurxo.androidtestingcalculator.domain.model.Digit;
-import com.xurxo.androidtestingcalculator.domain.model.Operator;
 
 public class CalculatorEngine {
 
     String operationsHistory = "";
+
     Digit lastDigit;
-    Operator lastOperator;
+    Operation lastOperation;
+
     double result;
     boolean resultIsDirty = false;
 
@@ -27,25 +24,17 @@ public class CalculatorEngine {
         resultIsDirty = true;
     }
 
-    public void enterOperator(Operator operator) {
-        lastOperator = operator;
+    public void enterOperation(Operation operation) {
+        lastOperation = operation;
 
-        this.operationsHistory += operator.stringValue();
+        this.operationsHistory += operation.getOperator();
 
         if (resultIsDirty)
-            evaluate();
+            calculate();
     }
 
     public void calculate(){
-        if (resultIsDirty)
-            evaluate();
-    }
-
-    private void evaluate(){
-
-        if (lastOperator.equals(Operator.AddOperator())){
-            result += lastDigit.doubleValue();
-        }
+        result = lastOperation.evaluate(result,lastDigit.doubleValue());
 
         resultIsDirty = false;
     }

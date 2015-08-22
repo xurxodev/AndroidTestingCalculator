@@ -1,6 +1,6 @@
 package com.xurxo.androidtestingcalculator.domain;
 
 public interface Operation {
-    String getOperator();
-    Double evaluate(Double operator1, Double operator2);
+    char getOperator();
+    Double evaluate(Double operand1, Double operand2);
 }

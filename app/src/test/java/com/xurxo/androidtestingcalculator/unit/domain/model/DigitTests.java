@@ -7,7 +7,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-public class DigitTest {
+public class DigitTests {
     @Rule
     public ExpectedException expectedDigitException = ExpectedException.none();
 
