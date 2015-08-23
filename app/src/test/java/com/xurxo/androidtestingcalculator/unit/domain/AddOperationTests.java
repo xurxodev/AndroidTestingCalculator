@@ -1,6 +1,7 @@
 package com.xurxo.androidtestingcalculator.unit.domain;
 
 import com.xurxo.androidtestingcalculator.domain.AddOperation;
+import com.xurxo.androidtestingcalculator.domain.Operation;
 
 import org.junit.Test;
 
@@ -15,11 +16,20 @@ public class AddOperationTests {
         double operand2 = 1;
         double expectedResult = 2;
 
-        AddOperation addOperation = new AddOperation();
+        Operation addOperation = new AddOperation();
 
         double result = addOperation.evaluate(operand1,operand2);
 
         assertThat(result, is(expectedResult));
     }
 
+    @Test
+    public void AddOperationOperator_ShouldBeSuccessfully(){
+
+        char expectedOperator = '+';
+
+        Operation addOperation = new AddOperation();
+
+        assertThat(addOperation.getOperator(), is(expectedOperator));
+    }
 }

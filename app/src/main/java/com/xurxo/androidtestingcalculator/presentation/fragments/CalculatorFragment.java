@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 import com.xurxo.androidtestingcalculator.R;
 import com.xurxo.androidtestingcalculator.domain.AddOperation;
-import com.xurxo.androidtestingcalculator.domain.CalculatorEngine;
-import com.xurxo.androidtestingcalculator.domain.model.Digit;
+import com.xurxo.androidtestingcalculator.domain.Calculator;
 
 public class CalculatorFragment extends Fragment {
 
@@ -38,7 +37,7 @@ public class CalculatorFragment extends Fragment {
     Button percentage;
     Button equal;
 
-    CalculatorEngine calEngine = new CalculatorEngine();
+    Calculator calEngine = new Calculator();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -75,7 +74,7 @@ public class CalculatorFragment extends Fragment {
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("0"));
+                calEngine.enterNumber(0.0);
             }
         });
 
@@ -83,63 +82,63 @@ public class CalculatorFragment extends Fragment {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("1"));
+                calEngine.enterNumber(1.0);
             }
         });
 
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("2"));
+                calEngine.enterNumber(2.0);
             }
         });
 
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("3"));
+                calEngine.enterNumber(3.0);
             }
         });
 
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("4"));
+                calEngine.enterNumber(4.0);
             }
         });
 
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("5"));
+                calEngine.enterNumber(5.0);
             }
         });
 
         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("6"));
+                calEngine.enterNumber(6.0);
             }
         });
 
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("7"));
+                calEngine.enterNumber(7.0);
             }
         });
 
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("8"));
+                calEngine.enterNumber(8.0);
             }
         });
 
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterDigit(new Digit("9"));
+                calEngine.enterNumber(9.0);
             }
         });
 
