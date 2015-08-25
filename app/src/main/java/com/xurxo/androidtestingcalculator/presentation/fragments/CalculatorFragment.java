@@ -12,10 +12,11 @@ import com.xurxo.androidtestingcalculator.R;
 import com.xurxo.androidtestingcalculator.domain.AddOperation;
 import com.xurxo.androidtestingcalculator.domain.Calculator;
 
+import java.text.DecimalFormat;
+
 public class CalculatorFragment extends Fragment {
 
-    TextView result;
-    TextView operationsHistory;
+    TextView display;
     Button zero;
     Button one;
     Button two;
@@ -47,8 +48,7 @@ public class CalculatorFragment extends Fragment {
 
         rootView = inflater.inflate(R.layout.fragment_calculator, container, false);
 
-        result = (TextView) rootView.findViewById(R.id.result_TextView);
-        operationsHistory =(TextView) rootView.findViewById(R.id.operations_history_textView);
+        display = (TextView) rootView.findViewById(R.id.display_TextView);
 
         zero= (Button) rootView.findViewById(R.id.zero_button);
         one= (Button) rootView.findViewById(R.id.one_button);
@@ -74,7 +74,7 @@ public class CalculatorFragment extends Fragment {
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(0.0);
+                pressNumber(0);
             }
         });
 
@@ -82,63 +82,63 @@ public class CalculatorFragment extends Fragment {
         one.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(1.0);
+                pressNumber(1);
             }
         });
 
         two.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(2.0);
+                pressNumber(2);
             }
         });
 
         three.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(3.0);
+                pressNumber(3);
             }
         });
 
         four.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(4.0);
+                pressNumber(4);
             }
         });
 
         five.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(5.0);
+                pressNumber(5);
             }
         });
 
         six.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(6.0);
+                pressNumber(6);
             }
         });
 
         seven.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(7.0);
+                pressNumber(7);
             }
         });
 
         eight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(8.0);
+                pressNumber(8);
             }
         });
 
         nine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calEngine.enterNumber(9.0);
+                pressNumber(9);
             }
         });
 
@@ -209,15 +209,26 @@ public class CalculatorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 calEngine.calculate();
-                result.setText(String.valueOf(calEngine.getResult()));
+                setDisplay(calEngine.getResult());
             }
         });
 
 
 
-        result.setText("");
-        operationsHistory.setText("");
+        display.setText("");
         return rootView;
+    }
+
+    private void pressNumber(int number) {
+        calEngine.enterNumber(number);
+
+        setDisplay(number);
+    }
+
+    private void setDisplay(double number) {
+        String displayText = new DecimalFormat("#.########").format(number);
+
+        display.setText(displayText);
     }
 
 }
