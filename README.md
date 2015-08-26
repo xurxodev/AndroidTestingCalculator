@@ -41,7 +41,7 @@ allprojects {
 android {
   // ...
   testOptions { 
-    unitTests.returnDefaultValues = true !!Caution
+    unitTests.returnDefaultValues = true //Caution!
   }
 }
 ```
