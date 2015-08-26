@@ -24,7 +24,7 @@ public class AddOperationTests {
     }
 
     @Test
-    public void AddOperationOperator_ShouldBeSuccessfully(){
+    public void getOperator_ShouldBePlus(){
 
         char expectedOperator = '+';
 

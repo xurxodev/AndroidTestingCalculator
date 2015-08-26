@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.xurxo.androidtestingcalculator.R;
 import com.xurxo.androidtestingcalculator.domain.AddOperation;
 import com.xurxo.androidtestingcalculator.domain.Calculator;
+import com.xurxo.androidtestingcalculator.domain.SubtractOperation;
 
 import java.text.DecimalFormat;
 
@@ -39,6 +40,9 @@ public class CalculatorFragment extends Fragment {
     Button equal;
 
     Calculator calEngine = new Calculator();
+
+    String currentNumber = "";
+    boolean resetCurrentNumber = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -173,14 +177,19 @@ public class CalculatorFragment extends Fragment {
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!currentNumber.equals(""))
+                    calEngine.enterNumber(Double.parseDouble(currentNumber));
+
                 calEngine.enterOperation(new AddOperation());
+
+                resetCurrentNumber = true;
             }
         });
 
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                calEngine.enterOperation(new SubtractOperation());
             }
         });
 
@@ -208,11 +217,17 @@ public class CalculatorFragment extends Fragment {
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!currentNumber.equals(""))
+                    calEngine.enterNumber(Double.parseDouble(currentNumber));
+
                 calEngine.calculate();
-                setDisplay(calEngine.getResult());
+
+                String displayText = new DecimalFormat("#.########").format(calEngine.getResult());
+                currentNumber = "";
+
+                setDisplay(displayText);
             }
         });
-
 
 
         display.setText("");
@@ -220,15 +235,15 @@ public class CalculatorFragment extends Fragment {
     }
 
     private void pressNumber(int number) {
-        calEngine.enterNumber(number);
+        if (resetCurrentNumber)
+            currentNumber = "";
 
-        setDisplay(number);
+        currentNumber += number;
+
+        setDisplay(currentNumber);
     }
 
-    private void setDisplay(double number) {
-        String displayText = new DecimalFormat("#.########").format(number);
-
+    private void setDisplay(String displayText) {
         display.setText(displayText);
     }
-
 }

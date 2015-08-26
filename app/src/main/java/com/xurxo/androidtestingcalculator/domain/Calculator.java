@@ -4,30 +4,47 @@ public class Calculator {
 
     Operation lastOperation;
     Double lastNumber = null;
-    double result = 0.0;
+    Double result = null;
 
     boolean resultIsDirty = false;
 
     public double getResult(){ return result; }
 
     public void enterNumber(double number){
-        lastNumber = number;
-        resultIsDirty = true;
+
+        if (result != null){
+            lastNumber = number;
+            resultIsDirty = true;
+        }
+        else
+            result = number;
     }
 
     public void enterOperation(Operation operation) {
         if (operation == null)
             throw new IllegalArgumentException("Operation can not be null");
 
-        this.lastOperation = operation;
+        if (lastOperation != null) {
+            if (resultIsDirty)
+                calculate();
 
-        if (resultIsDirty)
-            calculate();
+            this.lastOperation = operation;
+        }
+        else{
+            this.lastOperation = operation;
+
+            if (resultIsDirty)
+                calculate();
+        }
     }
 
     public void calculate(){
-        result = lastOperation.evaluate(result,lastNumber);
+        if (resultIsDirty && lastOperation != null) {
+            result = lastOperation.evaluate(result, lastNumber);
 
-        resultIsDirty = false;
+            lastNumber = null;
+            lastOperation = null;
+            resultIsDirty = false;
+        }
     }
 }

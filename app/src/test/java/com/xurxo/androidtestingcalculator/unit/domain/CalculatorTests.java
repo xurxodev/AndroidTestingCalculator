@@ -18,12 +18,12 @@ import static org.mockito.Mockito.when;
 public class CalculatorTests {
 
     @Test
-    public void enterNumberOne_EnterAddOperation_EnterNumberOne_EnterAddOperation_ResultShouldBeTwo(){
+    public void enterNumberOne_EnterOperation_EnterNumberOne_EnterAddOperation_ResultShouldBeTwo(){
         Operation operationMock = mock(Operation.class);
 
-        when(operationMock.evaluate(anyDouble(), anyDouble())).thenReturn((double) 3);
+        when(operationMock.evaluate(anyDouble(), anyDouble())).thenReturn(3.0);
 
-        double expectedValue = (double) 3;
+        double expectedValue = 3.0;
 
         Calculator calculator = new Calculator();
 
@@ -32,13 +32,13 @@ public class CalculatorTests {
         calculator.enterNumber(2.0);
         calculator.enterOperation(operationMock);
 
-        verify(operationMock,times(2)).evaluate(anyDouble(),anyDouble());
+        verify(operationMock,times(1)).evaluate(anyDouble(),anyDouble());
 
         assertThat(calculator.getResult(), is(expectedValue));
     }
 
     @Test
-    public void enterNumberOne_EnterAddOperation_EnterNumberOne_Calculate_ResultShouldBeTwo(){
+    public void enterNumberOne_EnterOperation_EnterNumberOne_Calculate_ResultShouldBeTwo(){
         Operation operationMock = mock(Operation.class);
 
         when(operationMock.evaluate(anyDouble(),anyDouble())).thenReturn((double) 3);
@@ -52,10 +52,35 @@ public class CalculatorTests {
         calculator.enterNumber(2.0);
         calculator.calculate();
 
-        verify(operationMock,times(2)).evaluate(anyDouble(),anyDouble());
+        verify(operationMock,times(1)).evaluate(anyDouble(),anyDouble());
 
         assertThat(calculator.getResult(), is(expectedValue));
-        }
+     }
+
+    @Test
+    public void enterNumber_EnterOperation_EnterNumber_Calculate_EnterOperation__EnterNumber_Calculate_ResultShouldWork(){
+        Operation operation1Mock = mock(Operation.class);
+        Operation operation2Mock = mock(Operation.class);
+
+        when(operation1Mock.evaluate(anyDouble(),anyDouble())).thenReturn((double) 8);
+        when(operation2Mock.evaluate(anyDouble(),anyDouble())).thenReturn((double) 9);
+
+        double expectedValue = (double) 9;
+
+        Calculator calculator = new Calculator();
+
+        calculator.enterNumber(5.0);
+        calculator.enterOperation(operation1Mock);
+        calculator.enterNumber(3.0);
+        calculator.calculate();
+        calculator.enterOperation(operation2Mock);
+        calculator.enterNumber(1.0);
+        calculator.calculate();
+
+        verify(operation1Mock,times(1)).evaluate(anyDouble(),anyDouble());
+
+        assertThat(calculator.getResult(), is(expectedValue));
+    }
 
     @Rule
     public ExpectedException expectedOperatorException = ExpectedException.none();
