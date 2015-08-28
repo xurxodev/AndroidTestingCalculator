@@ -3,6 +3,8 @@ Simple calculator for android created for educational purposes on testing in and
 
 This is a calculator with limitations, it is created for educational purposes. The logic of the calculator may not be the most appropriate if your goal was to make a real calculator.
 
+->![Android-testing-calculator](./screenshots/Android-testing-calculator.png )<-
+
 ## Unit test configuration
 From version 1.1 of Android Studio and the Android gradle plugin brings support for unit testing.
 
