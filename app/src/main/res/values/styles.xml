@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">#1976D2</item>
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textColorSecondary">#757575</item>
-        <item name="colorAccent">#FF5252</item>
+        <item name="colorAccent">@color/red_accent_2</item>
 
         <!--<item name="android:windowBackground">@color/window_background</item>
 

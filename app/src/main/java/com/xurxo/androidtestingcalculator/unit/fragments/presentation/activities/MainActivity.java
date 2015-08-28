@@ -1,4 +1,4 @@
-package com.xurxo.androidtestingcalculator.presentation.activities;
+package com.xurxo.androidtestingcalculator.unit.fragments.presentation.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.xurxo.androidtestingcalculator.R;
-import com.xurxo.androidtestingcalculator.presentation.fragments.CalculatorFragment;
+import com.xurxo.androidtestingcalculator.unit.fragments.CalculatorFragment;
 
 public class MainActivity extends AppCompatActivity {
 
