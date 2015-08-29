@@ -15,7 +15,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
 @RunWith(AndroidJUnit4.class)
-public class CalculatorFragmentTests {
+public class CalculatorFragmentsTests {
 
     @Rule
     public ActivityTestRule mainActivityRule = new ActivityTestRule<>(MainActivity.class);
