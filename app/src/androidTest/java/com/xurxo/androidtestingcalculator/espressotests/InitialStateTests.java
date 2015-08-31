@@ -11,25 +11,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 
 @RunWith(AndroidJUnit4.class)
-public class CalculationTests {
+public class InitialStateTests {
 
     @Rule
     public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class);
 
     @Test
-    public void ClickButtonOne_DisplayShouldShowOne(){
-        onView(withId(R.id.one_button))
-                .perform(click());
+    public void ToStartApp_DisplayShouldBeEmpty(){
 
         onView(withId(R.id.display_TextView))
-                .check(matches(withText("1")));
-
-
+                .check(matches(withText("")));
     }
 }

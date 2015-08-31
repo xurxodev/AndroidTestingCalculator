@@ -9,4 +9,7 @@
 
     <string name="action_settings">Settings</string>
 
+    <!--font families-->
+    <string name="font_fontFamily_regular">sans-serif</string>
+    <string name="font_fontFamily_medium">sans-serif-medium</string>
 </resources>
