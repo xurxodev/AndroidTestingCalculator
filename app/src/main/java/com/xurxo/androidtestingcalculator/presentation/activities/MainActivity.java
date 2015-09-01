@@ -5,7 +5,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.widget.DrawerLayout;
@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.xurxo.androidtestingcalculator.R;
+import com.xurxo.androidtestingcalculator.presentation.fragments.AboutFragment;
 import com.xurxo.androidtestingcalculator.presentation.fragments.CalculatorFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             setupToolbar();
             setupNavDrawer();
             setupNavigationView();
-            setupContentFragment();
+            setContentFragment(new CalculatorFragment());
             setupRoundedNavigationImage();
         }
     }
@@ -111,39 +112,27 @@ public class MainActivity extends AppCompatActivity {
         NavigationView view = (NavigationView) findViewById(R.id.navigation);
         view.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override public boolean onNavigationItemSelected(MenuItem menuItem) {
-                Snackbar.make(findViewById(android.R.id.content), menuItem.getTitle() + " pressed", Snackbar.LENGTH_LONG).show();
+
                 menuItem.setChecked(true);
                 drawerLayout.closeDrawers();
-                return true;
-            }
-        });
-/*
 
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                menuItem.setChecked(true);
                 switch (menuItem.getItemId()) {
-                    case R.id.nav_home:
-                        Snackbar.make(mContentFrame, "Item One",
-                                Snackbar.LENGTH_SHORT).show();
-                        *//*mCurrentSelectedPosition = 0;*//*
+                    case R.id.nav_calc:
+                        setContentFragment(new CalculatorFragment());
                         return true;
-                    case R.id.navigation_item_2:
-                        Snackbar.make(mContentFrame, "Item Two",
-                                Snackbar.LENGTH_SHORT).show();
-                        *//*mCurrentSelectedPosition = 1;*//*
+                    case R.id.nav_about:
+                        setContentFragment(new AboutFragment());
                         return true;
                     default:
                         return true;
                 }
             }
-        });*/
+        });
     }
 
-    private void setupContentFragment(){
+    private void setContentFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()
-                .add(R.id.container, new CalculatorFragment())
+                .replace(R.id.container,fragment)
                 .commit();
     }
 }

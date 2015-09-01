@@ -50,6 +50,8 @@ public class CalculatorFragment extends Fragment {
 
         View rootView;
 
+        getActivity().setTitle(getResources().getString(R.string.calculator_fragment_title));
+
         rootView = inflater.inflate(R.layout.fragment_calculator, container, false);
 
         display = (TextView) rootView.findViewById(R.id.display_TextView);
@@ -246,4 +248,5 @@ public class CalculatorFragment extends Fragment {
     private void setDisplay(String displayText) {
         display.setText(displayText);
     }
+
 }
