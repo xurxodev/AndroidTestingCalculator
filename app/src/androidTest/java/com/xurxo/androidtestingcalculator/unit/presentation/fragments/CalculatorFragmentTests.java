@@ -6,7 +6,7 @@ import android.support.test.runner.AndroidJUnit4;
 import android.widget.Button;
 
 import com.xurxo.androidtestingcalculator.R;
-import com.xurxo.androidtestingcalculator.unit.fragments.presentation.activities.MainActivity;
+import com.xurxo.androidtestingcalculator.presentation.activities.MainActivity;
 
 import org.junit.Rule;
 import org.junit.Test;

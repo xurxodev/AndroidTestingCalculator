@@ -1,4 +1,4 @@
-package com.xurxo.androidtestingcalculator.unit.fragments;
+package com.xurxo.androidtestingcalculator.presentation.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

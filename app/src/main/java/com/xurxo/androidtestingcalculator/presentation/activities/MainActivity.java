@@ -1,4 +1,4 @@
-package com.xurxo.androidtestingcalculator.unit.fragments.presentation.activities;
+package com.xurxo.androidtestingcalculator.presentation.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -18,7 +18,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.xurxo.androidtestingcalculator.R;
-import com.xurxo.androidtestingcalculator.unit.fragments.CalculatorFragment;
+import com.xurxo.androidtestingcalculator.presentation.fragments.CalculatorFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -45,18 +45,21 @@ public class MainActivity extends AppCompatActivity {
     private void setupRoundedNavigationImage(){
         //extraemos el drawable en un bitmap
         Drawable originalDrawable = getResources().getDrawable(R.drawable.xurxodev_image);
-        Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
 
-        //creamos el drawable redondeado
-        RoundedBitmapDrawable roundedDrawable =
-                RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
+        if (originalDrawable != null){
+            Bitmap originalBitmap = ((BitmapDrawable) originalDrawable).getBitmap();
 
-        //asignamos el CornerRadius
-        roundedDrawable.setCornerRadius(originalBitmap.getHeight());
+            //creamos el drawable redondeado
+            RoundedBitmapDrawable roundedDrawable =
+                    RoundedBitmapDrawableFactory.create(getResources(), originalBitmap);
 
-        ImageView imageView = (ImageView) findViewById(R.id.nav_imageView);
+            //asignamos el CornerRadius
+            roundedDrawable.setCornerRadius(originalBitmap.getHeight());
 
-        imageView.setImageDrawable(roundedDrawable);
+            ImageView imageView = (ImageView) findViewById(R.id.nav_imageView);
+
+            imageView.setImageDrawable(roundedDrawable);
+        }
     }
 
     private void setupToolbar(){
