@@ -72,4 +72,28 @@ public class InitialStateTests {
         onView(allOf(isAssignableFrom(Button.class), withText("√")))
                 .check(matches(isDisplayed()));
     }
+
+    @Test
+    public void ToStartApp_PositiveNegativeiveButtonShouldBeDisplayed(){
+        onView(allOf(isAssignableFrom(Button.class), withText("+/-")))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void ToStartApp_ClearAllButtonShouldBeDisplayed(){
+        onView(allOf(isAssignableFrom(Button.class), withText("CA")))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void ToStartApp_DotButtonShouldBeDisplayed(){
+        onView(allOf(isAssignableFrom(Button.class), withText(".")))
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void ToStartApp_EqualButtonShouldBeDisplayed(){
+        onView(allOf(isAssignableFrom(Button.class), withText("=")))
+                .check(matches(isDisplayed()));
+    }
 }
