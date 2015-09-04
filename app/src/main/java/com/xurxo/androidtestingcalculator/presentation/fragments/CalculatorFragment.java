@@ -191,7 +191,12 @@ public class CalculatorFragment extends Fragment {
         subtract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!currentNumber.equals(""))
+                    calEngine.enterNumber(Double.parseDouble(currentNumber));
+
                 calEngine.enterOperation(new SubtractOperation());
+
+                resetCurrentNumber = true;
             }
         });
 

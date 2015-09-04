@@ -13,7 +13,6 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
@@ -23,17 +22,18 @@ import static android.support.test.espresso.contrib.DrawerActions.openDrawer;
 import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
 import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
 import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
+import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.allOf;
 import static org.hamcrest.CoreMatchers.anything;
+import static org.hamcrest.CoreMatchers.startsWith;
 
 @RunWith(AndroidJUnit4.class)
 public class NavigationDrawerTests {
     @Rule
     public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class);
-
 
     @Test
     public void OpenAndCloseDrawer_ShouldWork() {
@@ -58,8 +58,16 @@ public class NavigationDrawerTests {
         onData(anything()).atPosition(2).perform(click());
 
         onView(allOf(isAssignableFrom(TextView.class), withParent(isAssignableFrom(Toolbar.class))))
-                .check(matches(withText("Calculator")));
+                .check(matches(withText("About")));
     }
 
+    @Test
+    public void NavigateToAbout_ContentShouldBeOfAbout() {
+        openDrawer(R.id.drawer_layout);
+
+        onData(anything()).atPosition(2).perform(click());
+
+        onView(withText(startsWith("Android Testing Calculator"))).check(matches(isDisplayed()));
+    }
 
 }
