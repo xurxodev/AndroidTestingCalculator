@@ -1,99 +1,94 @@
 package com.xurxo.androidtestingcalculator.espressotests;
 
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.support.v7.widget.Toolbar;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.xurxo.androidtestingcalculator.R;
-import com.xurxo.androidtestingcalculator.presentation.activities.MainActivity;
+import com.xurxo.androidtestingcalculator.espressotests.ScreenObjects.CalculatorScreen;
 
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.isAssignableFrom;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
-import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.CoreMatchers.allOf;
 
 @RunWith(AndroidJUnit4.class)
 public class InitialStateTests {
 
-    @Rule
-    public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class);
-
     @Test
     public void ToStartApp_TitleShouldBeCalculator() {
 
-        //ToolBar-> TextView
-        //Search TexView inside toolbar with text calculator
-        onView(allOf(isAssignableFrom(TextView.class), withParent(isAssignableFrom(Toolbar.class))))
-                .check(matches(withText("Calculator")));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start()
+                .verifyTextTitle("Calculator");
     }
 
     @Test
     public void ToStartApp_DisplayShouldBeEmpty(){
 
-        onView(withId(R.id.display_TextView))
-                .check(matches(withText("")));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start()
+                .verifyTextDisplay("");
     }
 
     @Test
     public void ToStartApp_NumberButtonsShouldBeDisplayed(){
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start();
+
         for(int i=0; i<10; i++){
-            onView(allOf(isAssignableFrom(Button.class), withText(String.valueOf(i))))
-                    .check(matches(isDisplayed()));
+            calculatorScreen.verifyButtonIsDisplayed(String.valueOf(i));
         }
     }
 
     @Test
     public void ToStartApp_OperationsButtonsShouldBeDisplayed(){
-        onView(allOf(isAssignableFrom(Button.class), withText("+")))
-                .check(matches(isDisplayed()));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
 
-        onView(allOf(isAssignableFrom(Button.class), withText("-")))
-                .check(matches(isDisplayed()));
-
-        onView(allOf(isAssignableFrom(Button.class), withText("x")))
-                .check(matches(isDisplayed()));
-
-        onView(allOf(isAssignableFrom(Button.class), withText("/")))
-                .check(matches(isDisplayed()));
-
-        onView(allOf(isAssignableFrom(Button.class), withText("%")))
-                .check(matches(isDisplayed()));
-
-        onView(allOf(isAssignableFrom(Button.class), withText("√")))
-                .check(matches(isDisplayed()));
+        calculatorScreen
+                .start()
+                .verifyButtonIsDisplayed("+")
+                .verifyButtonIsDisplayed("-")
+                .verifyButtonIsDisplayed("x")
+                .verifyButtonIsDisplayed("/")
+                .verifyButtonIsDisplayed("%")
+                .verifyButtonIsDisplayed("√");
     }
 
     @Test
     public void ToStartApp_PositiveNegativeiveButtonShouldBeDisplayed(){
-        onView(allOf(isAssignableFrom(Button.class), withText("+/-")))
-                .check(matches(isDisplayed()));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start()
+                .verifyButtonIsDisplayed("+/-");
     }
 
     @Test
     public void ToStartApp_ClearAllButtonShouldBeDisplayed(){
-        onView(allOf(isAssignableFrom(Button.class), withText("CA")))
-                .check(matches(isDisplayed()));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start()
+                .verifyButtonIsDisplayed("CA");
     }
 
     @Test
     public void ToStartApp_DotButtonShouldBeDisplayed(){
-        onView(allOf(isAssignableFrom(Button.class), withText(".")))
-                .check(matches(isDisplayed()));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start()
+                .verifyButtonIsDisplayed(".");
     }
 
     @Test
     public void ToStartApp_EqualButtonShouldBeDisplayed(){
-        onView(allOf(isAssignableFrom(Button.class), withText("=")))
-                .check(matches(isDisplayed()));
+        CalculatorScreen calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen
+                .start()
+                .verifyButtonIsDisplayed("=");
     }
 }
