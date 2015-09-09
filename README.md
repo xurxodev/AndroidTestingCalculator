@@ -48,6 +48,71 @@ android {
   }
 }
 ```
+## Android UI test configuration
+UI test run on the device and requires two configurations:
+* Instrumentation Test configuration
+* Automation Framework Test configuration . This project will use two : Espresso and Robotium
+
+###Instrumentation Test Configuration
+The AndroidJUnitRunner is a new unbundled test runner for Android, which is part of the Android Support Test Library and can be downloaded via the Android Support Repository. The new runner contains all improvements of GoogleInstrumentationTestRunner and adds more features:
+
+1. JUnit4 support
+2. Instrumentation Registry for accessing Instrumentation, Context and Bundle Arguments
+3. Test Filters @SdkSupress and @RequiresDevice
+4. Test timeouts
+5. Sharding of tests
+6. RunListener support to hook into the test run lifecycle
+7. Activity monitoring mechanism ActivityLifecycleMonitorRegistry
+
+* Download last Android Support Repository
+![Instrumentation test configuration in Android Studio step1](http://2.bp.blogspot.com/-IA1BLVtKAKU/Ve6XfwMoCcI/AAAAAAAAG80/FUfhNwRVVQ4/s1600/Instrumentation_test_configuration_in_Android_Studio-Step1.png)
+
+* Add dependencies to app module build.gradle and new AndroidJUnitRunner
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+    ...
+    defaultConfig {
+        …
+        testInstrumentationRunner ‘android.support.test.runner.AndroidJUnitRunner’
+    }
+
+}
+dependencies {
+    // Instrumentation Tests
+   androidTestCompile 'com.android.support.test:runner:0.3'
+   androidTestCompile 'com.android.support.test:rules:0.3'
+}
+```
+* Verify directory for your testing source code, src/androidTest/java
+* Open the "Build variants" tool window and change the test artifact to "Android Intrumentation Tests".
+
+### Espresso Configuration
+
+* Add dependencies to app module build.gradle 
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+    ...
+    defaultConfig {
+        …
+        testInstrumentationRunner ‘android.support.test.runner.AndroidJUnitRunner’
+    }
+
+}
+dependencies {
+    // Instrumentation Tests
+   androidTestCompile 'com.android.support.test:runner:0.3'
+   androidTestCompile 'com.android.support.test:rules:0.3'
+   
+   //Espresso
+   androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
+   androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2'
+}
+
+```
 License
 -------
 
