@@ -41,7 +41,7 @@ public class ScreenNavigator {
 
     public <T extends ScreenObject> T to(Class<T> type, int menuPosition) {
 
-        onData(anything()).atPosition(2).perform(click());
+        onData(anything()).atPosition(menuPosition).perform(click());
 
         try {
             return type.newInstance();
