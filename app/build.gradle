@@ -32,7 +32,12 @@ dependencies {
     // Instrumentation Test
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'
+
+    // Espresso Test
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
     androidTestCompile 'com.android.support.test.espresso:espresso-contrib:2.2'
+
+    //Robotium Test
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.4.1'
 
 }
