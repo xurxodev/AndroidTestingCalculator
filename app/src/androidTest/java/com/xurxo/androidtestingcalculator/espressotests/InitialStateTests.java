@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 public class InitialStateTests {
 
     @Test
-    public void ToStartApp_TitleShouldBeCalculator() {
+    public void toStartApp_TitleShouldBeCalculator() {
 
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
@@ -21,7 +21,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_DisplayShouldBeEmpty(){
+    public void toStartApp_DisplayShouldBeEmpty(){
 
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
@@ -31,7 +31,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_NumberButtonsShouldBeDisplayed(){
+    public void toStartApp_NumberButtonsShouldBeDisplayed(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -43,7 +43,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_OperationsButtonsShouldBeDisplayed(){
+    public void toStartApp_OperationsButtonsShouldBeDisplayed(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -57,7 +57,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_PositiveNegativeiveButtonShouldBeDisplayed(){
+    public void toStartApp_PositiveNegativeiveButtonShouldBeDisplayed(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -66,7 +66,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_ClearAllButtonShouldBeDisplayed(){
+    public void toStartApp_ClearAllButtonShouldBeDisplayed(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen

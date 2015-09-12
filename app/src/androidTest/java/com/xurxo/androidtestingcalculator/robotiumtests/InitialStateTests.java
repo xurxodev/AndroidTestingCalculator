@@ -40,7 +40,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_TitleShouldBeCalculator() {
+    public void toStartApp_TitleShouldBeCalculator() {
 
         String expectedTitle = "Calculator";
 
@@ -50,7 +50,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_DisplayShouldBeEmpty(){
+    public void toStartApp_DisplayShouldBeEmpty(){
 
         String expectedDisplay = "";
 
@@ -60,7 +60,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_NumberButtonsShouldBeDisplayed(){
+    public void toStartApp_NumberButtonsShouldBeDisplayed(){
         Button expectedButton;
 
         for(int i=0; i<10; i++){
@@ -71,7 +71,7 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_OperationsButtonsShouldBeDisplayed(){
+    public void toStartApp_OperationsButtonsShouldBeDisplayed(){
         assertThat(solo.getButton("+",true), notNullValue());
 
         assertThat(solo.getButton("-",true), notNullValue());
@@ -86,22 +86,22 @@ public class InitialStateTests {
     }
 
     @Test
-    public void ToStartApp_PositiveNegativeButtonShouldBeDisplayed(){
+    public void toStartApp_PositiveNegativeButtonShouldBeDisplayed(){
         assertThat(solo.getButton("+/-", true), notNullValue());
     }
 
     @Test
-    public void ToStartApp_ClearAllButtonShouldBeDisplayed(){
+    public void toStartApp_ClearAllButtonShouldBeDisplayed(){
         assertThat(solo.getButton("CA", true), notNullValue());
     }
 
     @Test
-    public void ToStartApp_DotButtonShouldBeDisplayed(){
+    public void toStartApp_DotButtonShouldBeDisplayed(){
         assertThat(solo.getButton(".", true), notNullValue());
     }
 
     @Test
-    public void ToStartApp_EqualButtonShouldBeDisplayed(){
+    public void toStartApp_EqualButtonShouldBeDisplayed(){
         assertThat(solo.getButton("=", true), notNullValue());
     }
 

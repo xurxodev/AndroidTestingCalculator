@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
 public class CalculationTests {
 
     @Test
-    public void PressOne_PressAdd_PressTwo_PressEqual_DisplayShouldShowThree(){
+    public void pressOne_PressAdd_PressTwo_PressEqual_DisplayShouldShowThree(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -24,7 +24,7 @@ public class CalculationTests {
     }
 
     @Test
-    public void PressThree_PressAdd_PressFour_PressAdd_PressFive_PressAdd_PressSix_PressEqual_DisplayShouldShowEighteen(){
+    public void pressThree_PressAdd_PressFour_PressAdd_PressFive_PressAdd_PressSix_PressEqual_DisplayShouldShowEighteen(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -41,7 +41,7 @@ public class CalculationTests {
     }
 
     @Test
-    public void PressNine_PressSubtract_PressEight_PressEqual_DisplayShouldShowOne(){
+    public void pressNine_PressSubtract_PressEight_PressEqual_DisplayShouldShowOne(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -55,7 +55,7 @@ public class CalculationTests {
 
 
     @Test
-    public void PressNine_PressSubtract_PressOne_PressSubtract_PressTwo_PressSubtract_PressEight_PressEqual_DisplayShouldShowMinusTwo(){
+    public void pressNine_PressSubtract_PressOne_PressSubtract_PressTwo_PressSubtract_PressEight_PressEqual_DisplayShouldShowMinusTwo(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -72,7 +72,7 @@ public class CalculationTests {
     }
 
     @Test
-    public void PressOne_PressAdd_PressNine_PressSubtract_PressFour_PressEqual_DisplayShouldShowSix(){
+    public void pressOne_PressAdd_PressNine_PressSubtract_PressFour_PressEqual_DisplayShouldShowSix(){
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen

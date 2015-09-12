@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
 public class NavigationDrawerTests {
 
     @Test
-    public void OpenAndCloseDrawer_ShouldWork() {
+    public void openAndCloseDrawer_ShouldWork() {
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -26,7 +26,7 @@ public class NavigationDrawerTests {
     }
 
     @Test
-    public void NavigateToAbout_TitleShouldBeAbout() {
+    public void navigateToAbout_TitleShouldBeAbout() {
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
@@ -36,7 +36,7 @@ public class NavigationDrawerTests {
     }
 
     @Test
-    public void NavigateToAbout_ContentShouldBeOfAbout() {
+    public void navigateToAbout_ContentShouldBeOfAbout() {
         CalculatorScreen calculatorScreen = new CalculatorScreen();
 
         calculatorScreen
