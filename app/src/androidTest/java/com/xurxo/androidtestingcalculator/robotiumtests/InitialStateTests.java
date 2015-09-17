@@ -1,42 +1,33 @@
 package com.xurxo.androidtestingcalculator.robotiumtests;
 
-import android.support.test.InstrumentationRegistry;
-import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.widget.Button;
-import android.widget.TextView;
 
-import com.robotium.solo.Solo;
-import com.xurxo.androidtestingcalculator.R;
-import com.xurxo.androidtestingcalculator.presentation.activities.MainActivity;
+import com.xurxo.androidtestingcalculator.robotiumtests.ScreenObjects.CalculatorScreen;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 
 @RunWith(AndroidJUnit4.class)
 public class InitialStateTests {
 
-    @Rule
-    public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class);
-
-    private Solo solo;
+    CalculatorScreen calculatorScreen;
 
     @Before
     public void setUp() throws Exception {
-        solo = new Solo(InstrumentationRegistry.getInstrumentation(), mainActivityRule.getActivity());
+        calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen.start();
     }
 
     @After
     public void tearDown() throws Exception {
-        solo.finishOpenedActivities();
+        calculatorScreen.finish();
     }
 
     @Test
@@ -44,7 +35,8 @@ public class InitialStateTests {
 
         String expectedTitle = "Calculator";
 
-        String title = (String) mainActivityRule.getActivity().getTitle();
+        String title = calculatorScreen
+                       .getTitle();
 
         assertThat(title, is(expectedTitle));
     }
@@ -54,11 +46,13 @@ public class InitialStateTests {
 
         String expectedDisplay = "";
 
-        String display = (String) ((TextView) solo.getView(R.id.display_TextView)).getText();
+        String display =  calculatorScreen
+                          .getDisplay();
 
         assertThat(display,is(expectedDisplay));
     }
 
+    /*
     @Test
     public void toStartApp_NumberButtonsShouldBeDisplayed(){
         Button expectedButton;
@@ -105,6 +99,6 @@ public class InitialStateTests {
         assertThat(solo.getButton("=", true), notNullValue());
     }
 
-
+*/
 
 }
