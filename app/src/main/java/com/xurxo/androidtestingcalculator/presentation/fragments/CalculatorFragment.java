@@ -76,14 +76,13 @@ public class CalculatorFragment extends Fragment {
         Divide= (Button) rootView.findViewById(R.id.divide_button);
         percentage= (Button) rootView.findViewById(R.id.percenage_button);
         equal= (Button) rootView.findViewById(R.id.equal_button);
-        
+
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 pressNumber(0);
             }
         });
-
 
         one.setOnClickListener(new View.OnClickListener() {
             @Override

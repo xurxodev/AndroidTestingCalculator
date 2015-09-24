@@ -38,4 +38,22 @@ public class CalculatorScreen {
     public String getDisplay(){
         return (String) ((TextView) solo.getView(R.id.display_TextView)).getText();
     }
+
+    public CalculatorScreen pressNumber(String number){
+        solo.clickOnView(solo.getButton(number));
+
+        return this;
+    }
+
+    public CalculatorScreen pressOperation(String operator){
+        solo.clickOnView(solo.getButton(operator));
+        return this;
+    }
+
+    public CalculatorScreen pressEqual(){
+        solo.clickOnView(solo.getView(R.id.equal_button));
+
+        return this;
+    }
+
 }

@@ -12,14 +12,6 @@ android:orientation="vertical"
         android:background="#ffffff"
         android:orientation="vertical"
         android:padding="10dp">
-<!--        <TextView
-            android:id="@+id/operations_history_textView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.3"
-            android:text="5+5"
-            android:gravity="center_vertical|right"
-            android:textSize="26sp" />-->
         <TextView
             android:id="@+id/display_TextView"
             android:layout_width="match_parent"
@@ -40,10 +32,7 @@ android:orientation="vertical"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal">
-            <Button
-                android:id="@+id/positive_negative_button"
-                style="@style/MediumTextSizeCalculatorButton"
-                android:text="+/-" />
+
             <Button
                 android:id="@+id/clear_all_button"
                 style="@style/MediumTextSizeCalculatorButton"
@@ -57,6 +46,10 @@ android:orientation="vertical"
                 style="@style/SmallTextSizeCalculatorButton"
                 android:text="x"
                 android:focusable="true" />
+            <Button
+                android:id="@+id/percenage_button"
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="%"/>
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -132,23 +125,19 @@ android:orientation="vertical"
             <Button
                 android:id="@+id/zero_button"
                 style="@style/LargueTextSizeCalculatorButton"
-                android:text="0"
-                android:layout_weight="1"/>
+                android:text="0"/>
             <Button
                 android:id="@+id/dot_button"
                 style="@style/LargueTextSizeCalculatorButton"
-                android:text="."
-                android:layout_weight="1"/>
+                android:text="."/>
+            <Button
+                android:id="@+id/positive_negative_button"
+                style="@style/MediumTextSizeCalculatorButton"
+                android:text="+/-" />
             <Button
                 android:id="@+id/equal_button"
                 style="@style/AccentCalculatorButton"
-                android:text="="
-                android:layout_weight="1"/>
-            <Button
-                android:id="@+id/percenage_button"
-                style="@style/MediumTextSizeCalculatorButton"
-                android:text="%"
-                android:layout_weight="1"/>
+                android:text="="/>
         </LinearLayout>
     </LinearLayout>
 
