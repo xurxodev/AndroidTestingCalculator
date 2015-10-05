@@ -113,6 +113,32 @@ dependencies {
 }
 
 ```
+
+### Robotium Configuration
+
+* Add dependencies to app module build.gradle 
+```groovy
+apply plugin: 'com.android.application'
+
+android {
+    ...
+    defaultConfig {
+        …
+        testInstrumentationRunner ‘android.support.test.runner.AndroidJUnitRunner’
+    }
+
+}
+dependencies {
+    // Instrumentation Tests
+   androidTestCompile 'com.android.support.test:runner:0.3'
+   androidTestCompile 'com.android.support.test:rules:0.3'
+   
+   //Robotium Test
+   androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.4.1'
+}
+
+```
+
 License
 -------
 
