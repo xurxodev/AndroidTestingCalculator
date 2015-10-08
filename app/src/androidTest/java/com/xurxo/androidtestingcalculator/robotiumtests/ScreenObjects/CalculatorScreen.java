@@ -3,6 +3,7 @@ package com.xurxo.androidtestingcalculator.robotiumtests.ScreenObjects;
 
 import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.robotium.solo.Solo;
@@ -37,6 +38,14 @@ public class CalculatorScreen {
 
     public String getDisplay(){
         return (String) ((TextView) solo.getView(R.id.display_TextView)).getText();
+    }
+
+    public boolean buttonIsDisplayed(String text){
+        Button expectedButton;
+
+        expectedButton = solo.getButton(text,true);
+
+        return expectedButton != null;
     }
 
     public CalculatorScreen pressNumber(String number){

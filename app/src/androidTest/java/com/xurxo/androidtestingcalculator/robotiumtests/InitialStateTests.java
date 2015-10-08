@@ -52,53 +52,50 @@ public class InitialStateTests {
         assertThat(display,is(expectedDisplay));
     }
 
-    /*
     @Test
     public void toStartApp_NumberButtonsShouldBeDisplayed(){
-        Button expectedButton;
+        boolean buttonIsDisplayed;
 
         for(int i=0; i<10; i++){
-            expectedButton = solo.getButton(String.valueOf(i),true);
+            buttonIsDisplayed = calculatorScreen.buttonIsDisplayed(String.valueOf(i));
 
-            assertThat(expectedButton, notNullValue());
+            assertThat(buttonIsDisplayed, is(true));
         }
     }
 
     @Test
     public void toStartApp_OperationsButtonsShouldBeDisplayed(){
-        assertThat(solo.getButton("+",true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("+"), is(true));
 
-        assertThat(solo.getButton("-",true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("-"), is(true));
 
-        assertThat(solo.getButton("x", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("x"), is(true));
 
-        assertThat(solo.getButton("/", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("/"), is(true));
 
-        assertThat(solo.getButton("%", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("%"), is(true));
 
-        assertThat(solo.getButton("√", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("√"), is(true));
     }
 
     @Test
     public void toStartApp_PositiveNegativeButtonShouldBeDisplayed(){
-        assertThat(solo.getButton("+/-", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("+/-"), is(true));
     }
 
     @Test
     public void toStartApp_ClearAllButtonShouldBeDisplayed(){
-        assertThat(solo.getButton("CA", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("CA"), is(true));
     }
 
     @Test
     public void toStartApp_DotButtonShouldBeDisplayed(){
-        assertThat(solo.getButton(".", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("."), is(true));
     }
 
     @Test
     public void toStartApp_EqualButtonShouldBeDisplayed(){
-        assertThat(solo.getButton("=", true), notNullValue());
+        assertThat(calculatorScreen.buttonIsDisplayed("="), is(true));
     }
-
-*/
 
 }
