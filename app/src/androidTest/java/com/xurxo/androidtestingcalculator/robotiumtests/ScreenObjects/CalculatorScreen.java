@@ -12,16 +12,15 @@ import com.xurxo.androidtestingcalculator.presentation.activities.MainActivity;
 
 import org.junit.Rule;
 
-public class CalculatorScreen {
-
-    @Rule
-    public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class,true,false);
-
-    private Solo solo;
+public class CalculatorScreen extends ScreenObject{
 
     public CalculatorScreen start(){
-        mainActivityRule.launchActivity(null);
+
+        mainActivityRule = new ActivityTestRule<>(MainActivity.class,true,false);
         solo = new Solo(InstrumentationRegistry.getInstrumentation(), mainActivityRule.getActivity());
+        navigator = new ScreenNavigator(mainActivityRule,solo);
+
+        mainActivityRule.launchActivity(null);
 
         return this;
     }
@@ -31,6 +30,15 @@ public class CalculatorScreen {
 
         return this;
     }
+
+    public AboutScreen navigateToAbout(){
+        navigation().open();
+
+        navigation().to("About");
+
+        return new AboutScreen(mainActivityRule,solo);
+    }
+
 
     public String getTitle() {
         return (String) mainActivityRule.getActivity().getTitle();

@@ -10,6 +10,8 @@ import android.support.v4.widget.DrawerLayout;
 import com.robotium.solo.Solo;
 import com.xurxo.androidtestingcalculator.R;
 import com.xurxo.androidtestingcalculator.presentation.activities.MainActivity;
+import com.xurxo.androidtestingcalculator.robotiumtests.ScreenObjects.AboutScreen;
+import com.xurxo.androidtestingcalculator.robotiumtests.ScreenObjects.CalculatorScreen;
 
 import org.junit.After;
 import org.junit.Before;
@@ -23,58 +25,46 @@ import static org.hamcrest.MatcherAssert.assertThat;
 @RunWith(AndroidJUnit4.class)
 public class NavigationDrawerTests {
 
-    @Rule
-    public ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class);
-
-    private Solo solo;
+    CalculatorScreen calculatorScreen;
 
     @Before
     public void setUp() throws Exception {
-        solo = new Solo(InstrumentationRegistry.getInstrumentation(), mainActivityRule.getActivity());
+        calculatorScreen = new CalculatorScreen();
+
+        calculatorScreen.start();
     }
 
     @After
     public void tearDown() throws Exception {
-        solo.finishOpenedActivities();
+        calculatorScreen.finish();
     }
+
 
     @Test
     public void openAndCloseDrawer_ShouldWork() {
-        //solo methods for navigation not working, get drawer layout with getView
-        DrawerLayout drawerLayout = (DrawerLayout) solo.getView(R.id.drawer_layout);
 
-        assertThat(isDrawerOpen(), is(false));
+        boolean isClosed;
+        boolean isOpen;
 
-        setDrawer(true);
+        isClosed = calculatorScreen
+                .navigation()
+                .isClosed();
 
-        assertThat(isDrawerOpen(), is(true));
+        assertThat(isClosed, is(true));
 
-        setDrawer(false);
+       isOpen = calculatorScreen
+                .navigation()
+                .open()
+                .isOpen();
 
-        assertThat(isDrawerOpen(), is(false));
+        assertThat(isOpen, is(true));
 
-    }
+        isClosed = calculatorScreen
+                .navigation()
+                .close()
+                .isClosed();
 
-    private void setDrawer(boolean open) {
-        Point deviceSize = new Point();
-
-        mainActivityRule.getActivity().getWindowManager().getDefaultDisplay().getSize(deviceSize);
-
-        int screenWidth = deviceSize.x;
-        int screenHeight = deviceSize.y;
-        int fromX = 0;
-        int toX = screenWidth / 2;
-        int fromY = screenHeight / 2;
-        int toY = fromY;
-
-        if (open)
-            solo.drag(fromX, toX, fromY, toY, 1);
-        else
-            solo.drag(toX,fromX,fromY, toY, 1);
-    }
-
-    private boolean isDrawerOpen() {
-        return solo.getView(R.id.navigation).isShown();
+        assertThat(isClosed, is(true));
     }
 
 
@@ -82,13 +72,9 @@ public class NavigationDrawerTests {
     public void navigateToAbout_TitleShouldBeAbout() {
         String aboutText = "About";
 
-        setDrawer(true);
-
-        solo.clickOnMenuItem(aboutText);
-
-        solo.waitForView(R.id.about_description);
-
-        String title = (String) mainActivityRule.getActivity().getTitle();
+        String title = calculatorScreen
+                .navigateToAbout()
+                .getTitle();
 
         assertThat(title, is(aboutText));
     }
@@ -96,13 +82,9 @@ public class NavigationDrawerTests {
 
     @Test
     public void navigateToAbout_ContentShouldBeOfAbout() {
-        String aboutText = "About";
+        AboutScreen about = calculatorScreen.navigateToAbout();
 
-        setDrawer(true);
-
-        solo.clickOnMenuItem(aboutText);
-
-        assertThat(solo.getView(R.id.about_app_name_and_version).isShown(), is(true));
-        assertThat(solo.getView(R.id.about_description).isShown(), is(true));
+        assertThat(about.NameAndVersionIsDisplayed(), is(true));
+        assertThat(about.DescriptionIsDisplayed(), is(true));
     }
 }

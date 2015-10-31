@@ -1,56 +1,71 @@
 package com.xurxo.androidtestingcalculator.robotiumtests.ScreenObjects;
 
-import com.xurxo.androidtestingcalculator.R;
+import android.graphics.Point;
+import android.support.test.rule.ActivityTestRule;
 
-import static android.support.test.espresso.Espresso.onData;
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.contrib.DrawerActions.closeDrawer;
-import static android.support.test.espresso.contrib.DrawerActions.openDrawer;
-import static android.support.test.espresso.contrib.DrawerMatchers.isClosed;
-import static android.support.test.espresso.contrib.DrawerMatchers.isOpen;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static org.hamcrest.CoreMatchers.anything;
+import com.robotium.solo.Solo;
+import com.xurxo.androidtestingcalculator.R;
+import com.xurxo.androidtestingcalculator.presentation.activities.MainActivity;
+
+import org.junit.Rule;
+
 
 public class ScreenNavigator {
 
-    public ScreenNavigator verifyIsOpen(){
-        onView(withId(R.id.drawer_layout)).check(matches(isOpen()));
+    private Solo solo;
+    @Rule
+    protected ActivityTestRule<MainActivity> mainActivityRule = new ActivityTestRule<>(MainActivity.class,true,false);
 
-        return this;
+    public ScreenNavigator(ActivityTestRule<MainActivity> mainActivityRule, Solo solo) {
+        this.solo = solo;
+        this.mainActivityRule = mainActivityRule;
     }
 
-    public ScreenNavigator verifyIsClosed(){
-        onView(withId(R.id.drawer_layout)).check(matches(isClosed()));
 
-        return this;
+    public boolean isOpen(){
+        return solo.getView(R.id.navigation).isShown();
+    }
+
+    public boolean isClosed(){
+        return !solo.getView(R.id.navigation).isShown();
     }
 
     public ScreenNavigator open(){
-        openDrawer(R.id.drawer_layout);
+        setDrawer(true);
 
         return this;
     }
 
     public ScreenNavigator close(){
-        closeDrawer(R.id.drawer_layout);
+        setDrawer(false);
 
         return this;
     }
 
-    public <T extends ScreenObject> T to(Class<T> type, int menuPosition) {
+    public ScreenNavigator to(String menuText) {
 
-        onData(anything()).atPosition(menuPosition).perform(click());
+        setDrawer(true);
 
-        try {
-            return type.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        solo.clickOnMenuItem(menuText);
 
-        return null;
+        return this;
+    }
+
+    private void setDrawer(boolean open) {
+        Point deviceSize = new Point();
+
+        mainActivityRule.getActivity().getWindowManager().getDefaultDisplay().getSize(deviceSize);
+
+        int screenWidth = deviceSize.x;
+        int screenHeight = deviceSize.y;
+        int fromX = 0;
+        int toX = screenWidth / 2;
+        int fromY = screenHeight / 2;
+        int toY = fromY;
+
+        if (open)
+            solo.drag(fromX, toX, fromY, toY, 1);
+        else
+            solo.drag(toX,fromX,fromY, toY, 1);
     }
 }
